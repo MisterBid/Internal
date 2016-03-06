@@ -120,9 +120,9 @@ local Admins = {
 	['55305559'] = 'Fireball1850',
 }
 local debug = true
-local DataStore = game:GetService('DataStoreService'):GetDataStore(%%%%1%%%%)
-local CoinsODS = game:GetService('DataStoreService'):GetOrderedDataStore(%%%%2%%%%)
-local LevelsODS = game:GetService('DataStoreService'):GetOrderedDataStore(%%%%3%%%%)
+local DataStore = game:GetService('DataStoreService'):GetDataStore(====1====)
+local CoinsODS = game:GetService('DataStoreService'):GetOrderedDataStore(====2====)
+local LevelsODS = game:GetService('DataStoreService'):GetOrderedDataStore(====3====)
 local slock = false
 local MessageBlacklist = {
 	':s [%-]*[%[]*%w+',
