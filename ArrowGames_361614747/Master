@@ -581,7 +581,7 @@ local function NewRound()
 	local c 
 	
 	if not game:GetService('ServerStorage'):FindFirstChild('Map'..tostring(manuallySelectedMap)) then
-		repeat c = game:GetService('ServerStorage'):FindFirstChild('Map'..tostring(math.random(2,12))) until c and c~=lastRound.map
+		repeat c = game:GetService('ServerStorage'):FindFirstChild('Map'..tostring(math.random(2,13))) until c and c~=lastRound.map
 	else
 		c = game:GetService('ServerStorage'):FindFirstChild('Map'..tostring(manuallySelectedMap))
 	end
