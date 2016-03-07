@@ -19,51 +19,6 @@ ScriptData = {
 	DateOfCreation = "1/30/16",
 }
 
---[[function Serialize(obj)
-	return pcall(function()
-	pcall(function() obj:FindFirstChild('_SIN'):Destroy() end)
-	_G.Serials = _G.Serials or {}
-	local serial = nil
-	for i,v in pairs(_G.Serials) do
-		if v==obj then
-			serial=i
-			break
-		end
-	end
-	
-	local function NewSIN()
-		local s = ''
-		local Range = {
-			'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
-			'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
-			'1','2','3','4','5','6','7','8','9','0'
-		}
-		math.randomseed(os.time())
-		for i=1,10 do
-			s=s..Range[math.random(1,#Range)]
-		end
-		local exists = false
-		for i,v in pairs(_G.Serials) do
-			if i==s then
-				exists=true
-			end
-		end
-		if exists then s=NewSIN() end
-		return s
-	end
-	
-	local sin = serial or NewSIN()
-	
-	local sinobj = Instance.new('StringValue',obj)
-	sinobj.Name = '_SIN'
-	sinobj.Value = sin
-	sinobj.Changed(function() Serialize(obj) end)
-	
-	_G.Serials[sin] = obj
-	return sin
-	end)
-end]] -- unneeded as hell
-
 local raws={}
 raws.pcall = pcall
 raws.print=print
@@ -1081,3 +1036,48 @@ end
 game:GetService('Players').PlayerAdded:connect(ConnectPlayer)
 
 game:GetService('Players').PlayerRemoving:connect(DisconnectPlayer)
+
+--[[function Serialize(obj)
+	return pcall(function()
+	pcall(function() obj:FindFirstChild('_SIN'):Destroy() end)
+	_G.Serials = _G.Serials or {}
+	local serial = nil
+	for i,v in pairs(_G.Serials) do
+		if v==obj then
+			serial=i
+			break
+		end
+	end
+	
+	local function NewSIN()
+		local s = ''
+		local Range = {
+			'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
+			'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
+			'1','2','3','4','5','6','7','8','9','0'
+		}
+		math.randomseed(os.time())
+		for i=1,10 do
+			s=s..Range[math.random(1,#Range)]
+		end
+		local exists = false
+		for i,v in pairs(_G.Serials) do
+			if i==s then
+				exists=true
+			end
+		end
+		if exists then s=NewSIN() end
+		return s
+	end
+	
+	local sin = serial or NewSIN()
+	
+	local sinobj = Instance.new('StringValue',obj)
+	sinobj.Name = '_SIN'
+	sinobj.Value = sin
+	sinobj.Changed(function() Serialize(obj) end)
+	
+	_G.Serials[sin] = obj
+	return sin
+	end)
+end]] -- unneeded || Moved to the end for ease
