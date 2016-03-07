@@ -912,6 +912,12 @@ local function onChat(plr,msg)
 				end
 				pcall(function() Notification(plr,str,Color3.new(0,0,0)) end)
 			end)
+		elseif msg:lower()=='/obby' then
+			log()
+			pcall(function()
+				local spwn = workspace:FindFirstChild('Obby'):FindFirstChild('Spawn')
+				pcall(function() plr.Character.Torso.CFrame = CFrame.new(spwn.Position) + Vector3.new(0,2,0) end)
+			end)
 		end
 	end
 end
