@@ -60,11 +60,6 @@ local Codes = {
 		Expiration = 0,
 		Item = 50,
 	},
-	{
-		Code = 'Kestrel',
-		Expiration = 1457310573,
-		Item = 100,
-	}
 }
 
 local Admins = {
@@ -76,6 +71,7 @@ local Admins = {
 	['75750606'] = 'figuretjetsalt',
 	['32032357'] = 'Scriptey',
 	['25307609'] = 'dwong',
+	['62389100'] = 'Jacob_E',--temp
 }
 local debug = true
 local DataStore = game:GetService('DataStoreService'):GetDataStore(====1====)
