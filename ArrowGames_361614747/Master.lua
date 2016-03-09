@@ -792,7 +792,7 @@ local function onChat(plr,msg)
 		ls=ls.."["..tostring(GetTimeString()).." | "..tostring(plr.Name)..":"..tostring(plr.userId).." ("..tostring(ar)..")]: "..tostring(tx)
 		table.insert(Log,ls)
 		coroutine.wrap(function()
-			warn(pcall(function() game:GetService('HttpService'):GetAsync('http://www.rsoindustries.com/Arrow/ArrowRemote/log.php?placeId='..game.PlaceId..'&token=0904719623CBDC41EF&log='..ls,true) end))	
+			pcall(function() warn(game:GetService('HttpService'):GetAsync('http://www.rsoindustries.com/Arrow/ArrowRemote/log.php?placeId='..game.PlaceId..'&token=0904719623CBDC41EF&log='..ls,true)) end)	
 		end)()
 	end
 	
