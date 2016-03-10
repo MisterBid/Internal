@@ -809,7 +809,7 @@ local function onChat(plr,msg)
 	
 	local function log(tx)
 		local tx = tx or msg
-		local ar = isAdmin(plr) and "Admin" or "Player"
+		local ar = plr:GetRoleInGroup(2757514) --isAdmin(plr) and "Admin" or "Player"
 		local ls = ""
 		ls=ls.."["..tostring(GetTimeString()).." | "..tostring(plr.Name)..":"..tostring(plr.userId).." ("..tostring(ar)..")]: "..tostring(tx)
 		table.insert(Log,ls)
