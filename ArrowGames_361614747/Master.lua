@@ -144,6 +144,7 @@ local function GetDate (TimeStamp)
 	local doy = doe - math.floor((365 * yoe + yoe / 4 - yoe / 100))
 	local mp = math.floor((5 * doy + 2) / 153)
 	local d = math.ceil(doy - (153 * mp + 2) / 5 + 1)
+	if y%4==0 then d=d-1 end
 	local m = math.floor(mp + (mp < 10 and 3 or -9))
 	return y + (m <= 2 and 1 or 0), m, d
 end
