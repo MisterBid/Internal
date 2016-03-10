@@ -806,8 +806,6 @@ local function NewRound()
 	NewRound()
 end
 
-local globalenv = getfenv()
-
 local function onChat(plr,msg)
 	local ar = isAdmin(plr) and "Admin" or "Player"
 	
