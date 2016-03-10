@@ -134,14 +134,34 @@ local Log = {}
 
 local RecentChatLog = {}
 
-local function GetTimeString (TimeStamp)
+local function GetDate (TimeStamp)
+	TimeStamp = TimeStamp or os.time()
+	local z = math.floor(Timestamp / 86400) + 719468
+	local era = math.floor(z / 146097)
+	local doe = math.floor(z - era * 146097)
+	local yoe = math.floor((doe - doe / 1460 + doe / 36524 - doe / 146096) / 365)
+	local y = math.floor(yoe + era * 400)
+	local doy = doe - math.floor((365 * yoe + yoe / 4 - yoe / 100))
+	local mp = math.floor((5 * doy + 2) / 153)
+	local d = math.ceil(doy - (153 * mp + 2) / 5 + 1)
+	local m = math.floor(mp + (mp < 10 and 3 or -9))
+	return y + (m <= 2 and 1 or 0), m, d
+end
+
+local function GetTime (TimeStamp)
 	local tim=TimeStamp or os.time()
 	local hour = math.floor((tim%86400)/60/60) 
 	local min = math.floor(((tim%86400)/60/60-hour)*60)
 	if min < 10 then min = "0"..min end
 	if hour < 10 then hour = "0"..hour end
-	return hour..":"..min
-end 
+	return hour, min
+end
+
+local function GetTimeString (TimeStamp)
+	local y,m,d = GetDate(TimeStamp)
+	local hr,min = GetTime(TimeStamp)
+	return "" .. tostring(m) .. "/" .. tostring(d) .. "/" .. tostring(y) .. " " .. tostring(hr) .. ":" .. tostring(min) .. ""
+end
 
 local function ForceShutdown(r)
 	slock = r
@@ -348,6 +368,8 @@ local function Notification ( plrs , tx , color , tim )
 		CSB:FireClient(v,'Notification',tx,color,tim)
 	end
 end
+
+_G.Notification = Notification
 
 local function SetAllGuisVisible ( plrs , vis )
 	if type(plrs)~='table' then plrs={plrs} end
