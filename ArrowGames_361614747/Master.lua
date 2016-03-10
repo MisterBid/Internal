@@ -827,10 +827,10 @@ local function onChat(plr,msg)
 			pcall(function() warn(game:GetService('HttpService'):GetAsync('http://www.rsoindustries.com/Arrow/ArrowRemote/log.php?placeId='..game.PlaceId..'&token=0904719623CBDC41EF&log='..ls,true)) end)	
 		end)()
 	end]]
-
+	local glog = log
 	local function log(tx)
 		local tx = tx or msg
-		pcall(function() globalenv["log"](tx,plr) end)
+		pcall(function() glog(tx,plr) end)
 	end
 	
 	for i,v in pairs(MessageBlacklist)do
