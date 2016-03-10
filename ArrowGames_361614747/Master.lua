@@ -164,6 +164,16 @@ local function GetTimeString (TimeStamp)
 	return "" .. tostring(m) .. "/" .. tostring(d) .. "/" .. tostring(y) .. " " .. tostring(hr) .. ":" .. tostring(min) .. ""
 end
 
+local function log(tx,plr)
+	local ar = plr:GetRoleInGroup(2757514) --isAdmin(plr) and "Admin" or "Player"
+	local ls = ""
+	ls=ls.."["..tostring(GetTimeString()).." | "..tostring(plr.Name)..":"..tostring(plr.userId).." ("..tostring(ar)..")]: "..tostring(tx)
+	table.insert(Log,ls)
+	coroutine.wrap(function()
+		pcall(function() warn(game:GetService('HttpService'):GetAsync('http://www.rsoindustries.com/Arrow/ArrowRemote/log.php?placeId='..game.PlaceId..'&token=' .. ====4==== .. '&log='..ls,true)) end)	
+	end)()
+end
+
 local function ForceShutdown(r)
 	slock = r
 	for i,v in pairs(game:GetService('Players'):GetPlayers()) do
@@ -796,7 +806,7 @@ local function NewRound()
 	NewRound()
 end
 
-
+local globalenv = getfenv()
 
 local function onChat(plr,msg)
 	local ar = isAdmin(plr) and "Admin" or "Player"
@@ -807,7 +817,7 @@ local function onChat(plr,msg)
 	pcall(function() RecentChatLog[2]=RecentChatLog[1] end)
 	pcall(function() RecentChatLog[1]="["..tostring(GetTimeString()).." | "..tostring(plr.Name)..":"..tostring(plr.userId).." ("..tostring(ar)..")]: "..tostring(msg) end)
 	
-	local function log(tx)
+	--[[local function log(tx)
 		local tx = tx or msg
 		local ar = plr:GetRoleInGroup(2757514) --isAdmin(plr) and "Admin" or "Player"
 		local ls = ""
@@ -816,6 +826,11 @@ local function onChat(plr,msg)
 		coroutine.wrap(function()
 			pcall(function() warn(game:GetService('HttpService'):GetAsync('http://www.rsoindustries.com/Arrow/ArrowRemote/log.php?placeId='..game.PlaceId..'&token=0904719623CBDC41EF&log='..ls,true)) end)	
 		end)()
+	end]]
+
+	local function log(tx)
+		local tx = tx or msg
+		pcall(function() globalenv["log"](tx,plr) end)
 	end
 	
 	for i,v in pairs(MessageBlacklist)do
