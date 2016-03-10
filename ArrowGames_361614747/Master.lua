@@ -64,7 +64,7 @@ local Codes = {
 
 local Admins = {
 	['56254686'] = 'RafDev',
-	['25617131'] = 'MisterBid',
+	['25617131'] = 'MisterBid', --That's meeee
 	['1135681'] = 'SimplyPixel',
 	['10469346'] = 'chillybagpiper',
 	['55305559'] = 'Fireball1850',
