@@ -68,10 +68,9 @@ local Admins = {
 	['1135681'] = 'SimplyPixel',
 	['10469346'] = 'chillybagpiper',
 	['55305559'] = 'Fireball1850',
-	['75750606'] = 'figuretjetsalt',
-	['32032357'] = 'Scriptey',
-	['25307609'] = 'dwong',
-	['62389100'] = 'Jacob_E',--temp
+	--['75750606'] = 'figuretjetsalt',
+	--['32032357'] = 'Scriptey',
+	--['25307609'] = 'dwong',
 }
 local debug = true
 local DataStore = game:GetService('DataStoreService'):GetDataStore(====1====)
