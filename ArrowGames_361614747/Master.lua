@@ -136,7 +136,7 @@ local RecentChatLog = {}
 
 local function GetDate (TimeStamp)
 	TimeStamp = TimeStamp or os.time()
-	local z = math.floor(Timestamp / 86400) + 719468
+	local z = math.floor(TimeStamp / 86400) + 719468
 	local era = math.floor(z / 146097)
 	local doe = math.floor(z - era * 146097)
 	local yoe = math.floor((doe - doe / 1460 + doe / 36524 - doe / 146096) / 365)
